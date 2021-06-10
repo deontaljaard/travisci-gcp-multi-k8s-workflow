@@ -17,7 +17,7 @@ before_install:
   - gcloud config set compute/zone europe-central2-a
   - gcloud container clusters get-credentials multi-cluster
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker build -t deontaljaard/multi-client ./client/Dockerfile.dev ./client
+  - docker build -t deontaljaard/multi-client -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true deontaljaard/multi-client npm test

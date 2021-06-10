@@ -1,6 +1,6 @@
-docker build -t deontaljaard/multi-client:latest -t deontaljaard/multi-client:$GIT_SHA ./client/Dockerfile ./client
-docker build -t deontaljaard/multi-server:latest -t deontaljaard/multi-server:$GIT_SHA ./server/Dockerfile ./server
-docker build -t deontaljaard/multi-worker:latest -t deontaljaard/multi-worker:$GIT_SHA ./worker/Dockerfile ./worker
+docker build -t deontaljaard/multi-client:latest -t deontaljaard/multi-client:$GIT_SHA -f ./client/Dockerfile ./client
+docker build -t deontaljaard/multi-server:latest -t deontaljaard/multi-server:$GIT_SHA -f ./server/Dockerfile ./server
+docker build -t deontaljaard/multi-worker:latest -t deontaljaard/multi-worker:$GIT_SHA -f ./worker/Dockerfile ./worker
 
 docker push deontaljaard/multi-client:latest 
 docker push deontaljaard/multi-server:latest
