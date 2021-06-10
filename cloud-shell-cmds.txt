@@ -1,0 +1,27 @@
+# Set context
+gcloud config set project multi-k8s-316218
+gcloud config set compute/zone europe-central2-a
+gcloud container clusters get-credentials multi-cluster
+
+# Add secret for PG
+kubectl create secret generic pgpassword --from-literal PG_PASSWORD=password
+
+# Install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+     
+# Add service account to Tiller (not necessary since Helm 3)
+kubectl create serviceaccount --namespace kube-system tiller
+kubectl create clusterrolebinding tiller-cluster-role --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+
+# Init helm
+helm init --service-account tiller --upgrade
+
+# Install ingress-nginx
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install my-release ingress-nginx/ingress-nginx
+
+# Upgrade cluster (if necessary)
+gcloud container clusters upgrade multi-cluster --master --cluster-version 1.16
+
