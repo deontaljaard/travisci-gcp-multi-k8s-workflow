@@ -26,6 +26,6 @@ deploy:
   provider: script
   script: 
     - bash ./deploy.sh
-    - rm service-account.json
+    - git reset --hard HEAD
   on:
     branch: main
