@@ -24,6 +24,8 @@ script:
 
 deploy:
   provider: script
-  script: bash ./deploy.sh
+  script: 
+    - bash ./deploy.sh
+    - rm service-account.json
   on:
     branch: main
