@@ -1,6 +1,9 @@
 # Multi-container K8s 
 
-The project houses an (over engineerd) Fibonacci calculator. Used it to learn more about a more complex CI flow.
+
+[![Build Status](https://travis-ci.com/deontaljaard/travisci-gcp-multi-k8s-workflowsvg?branch=main)](https://travis-ci.com/deontaljaard/travisci-gcp-multi-k8s-workflow)
+
+The project houses an (over-engineered) Fibonacci calculator. Used it to learn more about a more complex CI flow.
 
 ```text
 -> react app
