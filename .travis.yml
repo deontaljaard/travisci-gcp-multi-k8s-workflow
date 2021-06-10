@@ -24,8 +24,7 @@ script:
 
 deploy:
   provider: script
-  script: 
-    - bash ./deploy.sh
-    - git reset --hard HEAD
+  script: bash ./deploy.sh
+  skip_cleanup: true
   on:
     branch: main
